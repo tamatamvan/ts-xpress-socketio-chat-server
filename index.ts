@@ -24,10 +24,10 @@ app.get('/', (req: Request, res: Response) => {
 
 io.on('connection', (socket) => {
   socket.on('new-user', (name) => {
-    socket.emit('user-connected', name);
+    socket.broadcast.emit('user-connected', name);
   });
   socket.on('message', (message: Message) => {
-    socket.emit('message', message);
+    socket.broadcast.emit('message', message);
   });
 });
 
